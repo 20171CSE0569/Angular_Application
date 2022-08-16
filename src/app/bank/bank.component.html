@@ -1,0 +1,116 @@
+
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s7">
+                <table class="responsive-table highlight">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Bank Name</th>
+                        <th>comments</th>
+                        <th>Actions</th>
+                        
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let bank of bankdetailsdata let i=index">
+                        <td>{{i+1}}</td>
+                      <td>{{bank.bankName}}</td>
+                      <td>{{bank.comments}}</td>
+                      <a class="action-btn"><td [(ngModel)]="bank._id" (click)="SelecectedBankDetails(bank._id)">View</td>
+                    </a>
+                      <td>
+                          
+                           
+                         
+                        </td>
+                    </tr>
+                  </table>
+            </div>
+
+            <div *ngIf='showTable' class="col s5">
+              <form  [formGroup]="myForm"(ngSubmit)="onSubmit(myForm)">
+                <!-- <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="bankName" formControlName="bankName" placeholder="Enter bank name" required>
+                    <label>bankName :
+                      <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div> -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="comments"  formControlName="comments"  placeholder="Enter comments">
+                    <label style="margin-top: -4%;font-size: 14px;">comments :</label>
+                  </div>
+                </div>
+                <!-- <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="accountNumber" formControlName="accountNumber" placeholder="Enter accountnumber">
+                    <label>accountNumber :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="routingNumber" formControlName="routingNumber"  placeholder="enter routing number">
+                    <label>routingNumber :</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" name="swiftCode" formControlName="swiftCode"   placeholder="Enter Swift code">
+                      <label>swiftCode :</label>
+                    </div>
+                  </div> -->
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input type="date" name="commentedDate" formControlName="commentedDate"   placeholder="enter commentedDate">
+                      <label>commentedDate :</label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <!-- <button class="btn btn-custom right" type="button" (click)="resetForm(bankdetailsForm)">Reset</button> -->
+                    <button [disabled]="!myForm.valid"class="btn btn-custom right" type="submit">Submit</button>
+                  </div>
+                </div>
+              </form>
+              </div>
+              <div class="col s7">
+                <table  *ngIf='showTable' class="responsive-table highlight">
+                    <thead>
+                      <tr>
+                       
+                        <th>Bank Name</th>
+                        <th>Account Number</th>
+                        <th>Routing Number</th>
+                        <th>Swift Code</th>
+                        <th>Comments</th>
+                        <th>Commented Date</th>
+                        
+                      </tr>
+                    </thead>
+                  <tr>   
+                  
+                      <td>{{selectedBank.bankName }}</td>
+                    
+                      <td>{{selectedBank.accountNumber}}</td>
+                      <td>{{selectedBank.routingNumber}}</td>
+                      <td>{{selectedBank.swiftCode}}</td>
+                      <td>{{selectedBank.comments}}</td>
+                      <td>{{selectedBank.commentedDate | ddMmYYYYDate}}</td> 
+                    </tr>
+                  </table>
+            </div>
+    
+          </div>
+          
+          
+        </div>
+        
+      </div>
+    </div>
+  
+  </div>
